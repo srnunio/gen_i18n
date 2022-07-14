@@ -8,7 +8,6 @@ environment:
 
 
 dependencies:
-  args: '>=0.12.1 <2.0.0'
   path: ^1.8.0
   ansicolor: ^2.0.1
 
