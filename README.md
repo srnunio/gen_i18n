@@ -9,6 +9,10 @@ dependencies:
 
 dev_dependencies:
     gen_i18n: ^1.0.0
+
+flutter: 
+  assets:
+    - assets/i18n/locale/
 ```
 # Usage
 Run this command and this will result in the creation of the files: 
