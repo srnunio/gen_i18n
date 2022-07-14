@@ -43,7 +43,7 @@ Future<void> main() async {
   /// This is required
   WidgetsFlutterBinding.ensureInitialized();
   
-  /// Initial Locale is critical to initializing the internationalization feature
+  /// Initial locale is critical to initializing the internationalization feature
   await I18n.initialize(
       defaultLocale: Locale('en'),   /// This is required
       supportLocales: [Locale('en'),Locale('es')]  /// This is optional
@@ -65,7 +65,7 @@ MaterialApp(
       ...
     )
 ```
-For translation simply enter the key by calling the method `I18n.getValue('customMessage')` or `'customMessage'.translate`
+To translate text, simply enter the key by calling the method `I18n.getValue('customMessage')` or `'customMessage'.translate`
 ```
 Text(I18n.getValue('customMessage'))
 ```
@@ -74,4 +74,4 @@ Text(I18n.getValue('customMessage'))
 Text('customMessage'.translate)
 ```
 
-If you want to change locate simply call the `await I18n.updateLocate(Locale('es'))` method.
+If you want to change the current locate simply call the `await I18n.updateLocate(Locale('es'))` method.
