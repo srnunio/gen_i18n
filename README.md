@@ -1,5 +1,5 @@
 # gen_i18n
-This library adds internationalization to your dart project, generating classes and translation files
+Add internationalization to your dart project
 
 ## Installation
 ```
@@ -15,7 +15,7 @@ flutter:
     - assets/i18n/locale/
 ```
 # Usage
-Run this command and this will result in the creation of the files: 
+Running this command will result in the creation of the following files: 
 
 - **i18n.dart** : a dart file will be generated in ***lib/i18n/***. This dart file will be responsible for interpreting the translation files
 ```
@@ -23,14 +23,14 @@ Run this command and this will result in the creation of the files:
   "customMessage": "Write is here your message"
 }
 ```
-- **locale** : directory where the translation files. They will be generated in the folder ***assets/i18n/locale***
+- **locale** : directory where the translation files live. They will be generated in the folder ***assets/i18n/locale***
 
 **Note**: The name of a translation file starts without the key `i18n_` example: `i18n_en.json`
 ```
 flutter pub run gen_i18n:initialize
 ```
 
-Supported arguments by this library:
+Supported arguments:
 
 | Argument    | Description                                                                                                                                                                                                                |
 |-------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -43,7 +43,7 @@ Future<void> main() async {
   /// This is required
   WidgetsFlutterBinding.ensureInitialized();
   
-  /// Initial Locate is critical to initializing the internationalization feature
+  /// Initial locale is critical to initializing the internationalization feature
   await I18n.initialize(
       defaultLocale: Locale('en'),   /// This is required
       supportLocales: [Locale('en'),Locale('es')]  /// This is optional
@@ -65,7 +65,7 @@ MaterialApp(
       ...
     )
 ```
-For translation simply enter the key by calling the method `I18n.getValue('customMessage')` or `'customMessage'.translate`
+To translate text, simply enter the key by calling the method `I18n.getValue('customMessage')` or `'customMessage'.translate`
 ```
 Text(I18n.getValue('customMessage'))
 ```
@@ -74,4 +74,4 @@ Text(I18n.getValue('customMessage'))
 Text('customMessage'.translate)
 ```
 
-If you want to change locate just call the method `await I18n.updateLocate(Locale('es'))`
+If you want to change the current locate simply call the `await I18n.updateLocate(Locale('es'))` method.
