@@ -1,6 +1,5 @@
 # gen_i18n
-Library to help you add internationalization in your project dart generating classes and translation files.
-
+This library adds internationalization to your dart project, generating classes and translation files
 
 ## Installation
 ```
