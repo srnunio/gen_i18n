@@ -1,28 +1,28 @@
 library print_tool;
 
-import 'package:ansicolor/ansicolor.dart';
+import 'package:colorize/colorize.dart';
 
-void showInfo(String info) {
-  AnsiPen pen = new AnsiPen()..gray();
-  print(pen('[INFO]: $info'));
+void showInfo(String message, {String operator = ''}) {
+  var led = Colorize('$operator[INFO]:').darkGray();
+  print('$led $message');
 }
 
-void showWarning(String warning) {
-  AnsiPen pen = new AnsiPen()..yellow();
-  print(pen('[WARNING]: $warning'));
+void showWarning(String message, {String operator = ''}) {
+  var led = Colorize('$operator[WARNING]:').bold().yellow();
+  print('$led $message');
 }
 
-void showComplete(String warning) {
-  AnsiPen pen = new AnsiPen()..green(bold: true);
-  print(pen('[COMPLETED]: $warning'));
+void showComplete(String message, {String operator = ''}) {
+  var led = Colorize('$operator[COMPLETED]:').bold().green();
+  print('$led $message');
 }
 
-void showSuccess(String warning) {
-  AnsiPen pen = new AnsiPen()..green(bold: true);
-  print(pen('[SUCCESS]: $warning'));
+void showCreated(String message, {String operator = ''}) {
+  var led = Colorize('$operator[CREATED]:').bold().green();
+  print('$led $message');
 }
 
-void showError(String error) {
-  AnsiPen pen = new AnsiPen()..red(bold: true);
-  print(pen('[ERROR]: $error'));
+void showError(String message, {String operator = ''}) {
+  var led = Colorize('$operator[ERROR]:').bold().red();
+  print('$led $message');
 }
