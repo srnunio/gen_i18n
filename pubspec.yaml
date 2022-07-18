@@ -1,6 +1,7 @@
-name: gen_i18n
+name: gen_i18n 
 description: Library to help you add internationalization in your project dart generating classes and translation files.
 version: 1.0.1
+ 
 homepage: https://github.com/EdvaldoMartins/gen_i18n
 
 environment:
