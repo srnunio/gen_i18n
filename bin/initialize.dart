@@ -5,7 +5,7 @@ import 'package:gen_i18n/src/file_utils.dart';
 import 'package:gen_i18n/src/log.dart';
 
 main(List<String> args) async {
-  showInfo('STARTED');
+  showInfo('Start generating');
   if (await initializeCodeFolder()) {
     await exportI18nClass();
   }
@@ -13,5 +13,5 @@ main(List<String> args) async {
     var _localeCodeList = extractLocateValues(args: args);
     await exportLocaleJson(localeCodeList: _localeCodeList);
   }
-  showComplete('FINSIH');
+  showInfo('Files generated');
 }

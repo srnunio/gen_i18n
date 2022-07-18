@@ -7,8 +7,9 @@ const _content = '''
 ''';
 
 /// generate files for translate
-Future<void> exportLocaleJson(
+Future<bool> exportLocaleJson(
     {List<String> localeCodeList = const ['en']}) async {
   for (var code in localeCodeList)
     await newFile(file: getJsonFile(code: code), content: _content);
+  return true;
 }

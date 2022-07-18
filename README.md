@@ -34,7 +34,7 @@ Supported arguments:
 
 | Argument    | Description                                                                                                                                                                                                                |
 |-------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| --locate    | By definition only one translation file is generated `i18n_en.json`. If you want to create more translation files for other languages just send the arguments. Example: `flutter pub run gen_i18n:initialize --locate-pt-es` |
+| --locale    | By definition only one translation file is generated `i18n_en.json`. If you want to create more translation files for other languages just send the arguments. Example: `flutter pub run gen_i18n:initialize --locale-pt-es` |
 
 ## Example
 Modifies the main method

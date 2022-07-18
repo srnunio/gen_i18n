@@ -4,7 +4,6 @@ const _KEY = '--locale-';
 /// of language codes which you want to create the translation files
 List<String> extractLocateValues({required List<String> args}) {
   var index = args.indexWhere((value) => value.trim().contains(_KEY));
-
   if (index < 0) return ['en'];
 
   var arg = args.elementAt(index).replaceAll(_KEY, '');

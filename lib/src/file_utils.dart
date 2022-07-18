@@ -9,12 +9,12 @@ final Directory _current = Directory.current;
 Future<bool> _newFolder(Directory file) async {
   try {
     if (!await file.exists()) await file.create(recursive: true);
-    var exists = await file.exists();
-    if (exists) showSuccess('Created new folder:: ${file.path}');
-    return exists;
+    if (await file.exists()) showCreated(file.path, operator: '\t');
+    return true;
   } catch (error) {
     showError(file.path);
   }
+  showError(file.path);
   return false;
 }
 
@@ -23,23 +23,22 @@ Future<bool> newFile({required File file, required String content}) async {
   try {
     if (await file.exists()) return true;
 
-    var exists = await (await file.writeAsString(content)).exists();
+    if (await (await file.writeAsString(content)).exists())
+      showCreated(file.path, operator: '\t');
 
-    if (exists) showSuccess('Created new file:: ${file.path}');
-
-    return exists;
+    return true;
   } catch (error) {
     showError(file.path);
   }
-  showSuccess('');
+  showError(file.path);
   return false;
 }
 
 /// [initializeAssents] Folder where the translation files will be
 Future<bool> initializeAssents() async {
   var _path = Directory(path.join(_current.path, 'assets/i18n/locale'));
-  if (!await _path.exists() && !await _newFolder(_path)) return false;
-  showSuccess('InitializeCodeFolder:: ${_path.path}');
+  if (!await _path.exists()) return await _newFolder(_path);
+  showWarning(_path.path, operator: '\t');
   return true;
 }
 
@@ -47,8 +46,10 @@ Future<bool> initializeAssents() async {
 /// the internationalization
 Future<bool> initializeCodeFolder() async {
   var _path = Directory(path.join(_current.path, 'lib/i18n'));
-  if (!await _path.exists() && !await _newFolder(_path)) return false;
-  showSuccess('InitializeCodeFolder:: ${_path.path}');
+  if (!await _path.exists()) {
+    return await _newFolder(_path);
+  }
+  showWarning(_path.path, operator: '\t');
   return true;
 }
 
