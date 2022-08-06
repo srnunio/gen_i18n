@@ -2,6 +2,8 @@ import 'package:example/i18n/i18n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
+const _supportLocales = [Locale('en'), Locale('pt')];
+
 Future<void> main() async {
   /// This is required
   WidgetsFlutterBinding.ensureInitialized();
@@ -9,7 +11,7 @@ Future<void> main() async {
   /// Initial Locate is critical to initializing the internationalization feature
   await I18n.initialize(
       defaultLocale: Locale('en'), /// This is required
-      supportLocales: [Locale('en'), Locale('es')] /// This is optional
+      supportLocales: _supportLocales  /// This is optional
       );
 
   runApp(const MyApp());
@@ -34,7 +36,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'lib'.translate),
+      home: MyHomePage(title: 'Flutter Demo'),
     );
   }
 }
@@ -49,6 +51,31 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  Locale _locale = Locale('en');
+
+  /// update locate
+  void onChanged(Locale? locale) async {
+    if (locale == null) return;
+    await I18n.updateLocate(locale);
+    setState(() => _locale = locale);
+  }
+
+  /// item to list of locale
+  DropdownMenuItem<Locale> _itemBuild(Locale item) {
+    return DropdownMenuItem<Locale>(
+      child: Text(item.toLanguageTag()),
+      value: item,
+    );
+  }
+
+  Widget _languageBody() {
+    return DropdownButton<Locale>(
+      value: _locale,
+      items: _supportLocales.map(_itemBuild).toList(),
+      onChanged: onChanged,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,6 +89,7 @@ class _MyHomePageState extends State<MyHomePage> {
             Text(
               'customMessage'.translate,
             ),
+            _languageBody()
           ],
         ),
       ), // This trailing comma makes auto-formatting nicer for build methods.
