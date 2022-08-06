@@ -2,7 +2,7 @@
 Add internationalization to your dart project
 
 ## Installation
-```
+```yaml
 dependencies:
     flutter_localizations:
         sdk: flutter 
@@ -18,7 +18,7 @@ flutter:
 Running this command will result in the creation of the following files: 
 
 - **i18n.dart** : a dart file will be generated in ***lib/i18n/***. This dart file will be responsible for interpreting the translation files
-```
+```json
 {
   "customMessage": "Write is here your message"
 }
@@ -38,7 +38,7 @@ Supported arguments:
 
 ## Example
 Modifies the main method
-```
+```dart
 Future<void> main() async {
   /// This is required
   WidgetsFlutterBinding.ensureInitialized();
@@ -47,12 +47,12 @@ Future<void> main() async {
   await I18n.initialize(
       defaultLocale: Locale('en'),   /// This is required
       supportLocales: [Locale('en'),Locale('es')]  /// This is optional
-  );
+  )
   ...
 }
 ```
 
-```
+```dart
 MaterialApp( 
       locale: I18n.currentLocate,
       supportedLocales: I18n.supportedLocales,
@@ -66,11 +66,11 @@ MaterialApp(
     )
 ```
 To translate text, simply enter the key by calling the method `I18n.getValue('customMessage')` or `'customMessage'.translate`
-```
+```dart
 Text(I18n.getValue('customMessage'))
 ```
 
-```
+```dart
 Text('customMessage'.translate)
 ```
 
