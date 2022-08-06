@@ -8,7 +8,7 @@ dependencies:
         sdk: flutter 
 
 dev_dependencies:
-    gen_i18n: ^1.0.0
+    gen_i18n: ^1.0.3
 
 flutter: 
   assets:
